@@ -31,7 +31,7 @@ class EspressoExpertApp(QMainWindow):
         # UI Setup
         self.main_widget = QWidget()
         self.setCentralWidget(self.main_widget)
-        self.layout = QVBoxLayout(self.main_widget)
+        self.custom_layout = QVBoxLayout(self.main_widget)
 
         # Question Label
         self.question_label = QLabel("Click 'Start' to begin diagnostic")
@@ -39,11 +39,11 @@ class EspressoExpertApp(QMainWindow):
             "font-size: 18px; font-weight: bold; margin: 10px;"
         )
         self.question_label.setWordWrap(True)
-        self.layout.addWidget(self.question_label)
+        self.custom_layout.addWidget(self.question_label)
 
         # Chart
         self.canvas = MplCanvas(self, width=6, height=4)
-        self.layout.addWidget(self.canvas)
+        self.custom_layout.addWidget(self.canvas)
 
         # Buttons
         self.btn_layout = QHBoxLayout()
@@ -55,7 +55,7 @@ class EspressoExpertApp(QMainWindow):
             btn.setMinimumHeight(40)
             self.btn_layout.addWidget(btn)
 
-        self.layout.addLayout(self.btn_layout)
+        self.custom_layout.addLayout(self.btn_layout)
 
         # Connect events
         self.btn_yes.clicked.connect(lambda: self.process_answer(True))
